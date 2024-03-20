@@ -1,15 +1,19 @@
 package com.svalero.apifootball.Service;
 
 
-import com.svalero.apifootball.Model.TeamInfo;
+import com.svalero.apifootball.Model.Country;
+import com.svalero.apifootball.Model.CountryResponse;
+import com.svalero.apifootball.Model.Team;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 import java.util.List;
 
 public interface FootballApi {
-    @GET("v3.football.api-sports.io/teams/{country}")
-    Observable<List<TeamInfo>> getTeamInfo(@Path("country") String country);
+    @GET("teams")
+    Observable<List<Team>> getTeamsByCountry(@Query("country") String country);
 
+    @GET("countries")
+    Observable<CountryResponse> getCountries();
 }
