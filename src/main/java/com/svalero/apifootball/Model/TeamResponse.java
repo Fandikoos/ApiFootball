@@ -1,17 +1,16 @@
 package com.svalero.apifootball.Model;
 
-import javafx.scene.image.Image;
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StadiumInfo {
-
-    private String name;
-    private int capacity;
-    private String surface;
-    private Image image;
+public class TeamResponse {
+    private Team team;
+    private Venue venue;
 }
