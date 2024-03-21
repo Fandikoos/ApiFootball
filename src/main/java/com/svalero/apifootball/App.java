@@ -7,26 +7,31 @@ import com.svalero.apifootball.Service.TeamService;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.TestObserver;
+import javafx.application.Application;
+import javafx.stage.Stage;
 import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.List;
 
-public class App {
+public class App extends Application {
 
-        public static void main(String[] args) {
-                //launch();
-            // Crear una instancia de TeamService
-            TeamService teamService = new TeamService();
+    @Override
+    public void start(Stage stage) throws Exception {
 
-            teamService.listCountries();
+    }
+    public static void main(String[] args) {
+        launch();
+        /* Crear una instancia de TeamService
+        TeamService teamService = new TeamService();
 
-            try {
-                Thread.sleep(5000); // Esperar 5 segundos (ajusta este valor según sea necesario)
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        teamService.listCountries();
 
-
+        try {
+            Thread.sleep(5000); // Esperar 5 segundos (ajusta este valor según sea necesario)
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+    }
+    
 }
