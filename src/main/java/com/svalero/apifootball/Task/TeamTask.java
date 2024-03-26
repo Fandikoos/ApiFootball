@@ -25,18 +25,18 @@ public class TeamTask extends Task<Integer> {
         TeamService teamService = new TeamService();
         //System.out.println(country + "TeamTask");
 
-        int totalTeams = 100;
+        final Long totalTeams = teamService.getTotalTeamsByCountry(country);
+        //System.out.println(totalTeams);
         final int[] totalProcessedTeams = {0};
-
 
         Consumer<Team> teamConsumer = (team) -> {
           Thread.sleep(20);
-          Platform.runLater(() -> this.teamsNames.add(team.getName()));
-
-
-          totalProcessedTeams[0]++;
-          double progressTeams = (double) totalProcessedTeams[0] / totalTeams;
-          updateProgress(progressTeams, 1);
+            Platform.runLater(() -> {
+                this.teamsNames.add(team.getName());
+                totalProcessedTeams[0]++;
+                double progressTeams = (double) totalProcessedTeams[0] / totalTeams;
+                updateProgress(progressTeams, 1);
+            });
         };
 
         teamService.getTeamsByCountry(country).subscribe(teamConsumer);

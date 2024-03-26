@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.svalero.apifootball.Model.Team;
 import com.svalero.apifootball.Model.Venue;
 import io.reactivex.Observable;
-import io.reactivex.Single;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -57,14 +56,6 @@ public class TeamService {
                 .map(teamVenueWrapper -> teamVenueWrapper.getTeam()).map(team -> team);
     }
 
-    // Otra forma de observable pero que nos devolveria directamente un String que seria el nombre del equipo, de aqui faltaria un Consumer en el TeamTask que accediera a este observable y luego habria que unirlo en fxml a traves de una listview.
-    public Observable<Integer> getTotalTeamByCountry (String country){
-        return this.footballApi.getTeamsByCountry(country).flatMapIterable(teamResponse -> teamResponse.getResponse())
-                .map(teamVenueWrapper -> teamVenueWrapper.getTeam())
-                .count()  //Esto nos devuelve un Single<Long>
-                .flatMapObservable(totalCountTeams -> Observable.just(totalCountTeams.intValue()));  //Convertimos el SIngle<Long> a un Observable<Integer>
-    }
-
     // Observable para recoger el nombre de un estadio en funcion del equipo
     public Observable<String> getVenueByTeam (String country){
         return this.footballApi.getTeamsByCountry(country).flatMapIterable(teamResponse -> teamResponse.getResponse())
@@ -79,4 +70,10 @@ public class TeamService {
 
     //Faltaria en el teamtask el objeto Consumer para llamar a este observable y esto y luego unirlo al list view de fxml
 
+    //Metodo para obtener el numero de equipos en funcion de un país para que el progreso de la ejecucion del programa concuerde
+    public Long getTotalTeamsByCountry(String country) {
+        return getTeamsByCountry(country)
+                .count()
+                .blockingGet(); // Obtener el valor emitido de forma síncrona
+    }
 }
