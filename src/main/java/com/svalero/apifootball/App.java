@@ -1,31 +1,35 @@
 package com.svalero.apifootball;
 
-import com.svalero.apifootball.Model.Team;
-import com.svalero.apifootball.Model.TeamResponse;
-import com.svalero.apifootball.Model.Venue;
-import com.svalero.apifootball.Service.TeamService;
-import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.observers.TestObserver;
+import com.svalero.apifootball.Controller.AppController;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-import retrofit2.Response;
-
-import java.io.IOException;
-import java.util.List;
 
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-
+    public void init() throws Exception {
+        System.out.println("Starting JavaFX Application");
+        super.init();
     }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("interfaz.fxml"));
+        loader.setController(new AppController());
+        Scene scene = new Scene(loader.load());
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
         launch();
-        /* Crear una instancia de TeamService
-        TeamService teamService = new TeamService();
+        //Crear una instancia de TeamService
+        /*TeamService teamService = new TeamService();
 
-        teamService.listCountries();
+        //teamService.listCountries();
+        teamService.listTeamsByCountry("portugal");
 
         try {
             Thread.sleep(5000); // Esperar 5 segundos (ajusta este valor según sea necesario)

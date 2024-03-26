@@ -2,16 +2,15 @@ package com.svalero.apifootball.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.svalero.apifootball.Model.Country;
+import com.svalero.apifootball.Model.Team;
+import com.svalero.apifootball.Model.Venue;
 import io.reactivex.Observable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.Single;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import java.util.List;
 
 public class TeamService {
     private static final String BASE_URL = "https://v3.football.api-sports.io/";
@@ -49,25 +48,35 @@ public class TeamService {
 
         this.footballApi = retrofit.create(FootballApi.class);
 
-        System.out.println("API CONECTADA");
+        //System.out.println("API CONECTADA");
     }
 
-
-    // Método para obtener equipos por país y extraer el nombre de cada equipo
-
-
-    public void listCountries() {
-        footballApi.getCountries()
-                .subscribeOn(Schedulers.io())
-                .subscribe(response -> {
-                    List<Country> countries = response.getCountries();
-                    // Manejar los países aquí usando Streams, por ejemplo:
-                    countries.forEach(country -> System.out.println(country.getName()));
-                }, throwable -> {
-                    // Manejar errores
-                    System.out.println("Error: " + throwable.getMessage());
-                });
+    //Observable que nos va a devolver un objeto Team y a partir de ahi podriamos acceder al objeto y el consumidor (TeamTask) podria acceder al nombre, fundation, etc...
+    public Observable<Team> getTeamsByCountry (String country){
+        return this.footballApi.getTeamsByCountry(country).flatMapIterable(teamResponse -> teamResponse.getResponse())
+                .map(teamVenueWrapper -> teamVenueWrapper.getTeam()).map(team -> team);
     }
 
+    // Otra forma de observable pero que nos devolveria directamente un String que seria el nombre del equipo, de aqui faltaria un Consumer en el TeamTask que accediera a este observable y luego habria que unirlo en fxml a traves de una listview.
+    public Observable<Integer> getTotalTeamByCountry (String country){
+        return this.footballApi.getTeamsByCountry(country).flatMapIterable(teamResponse -> teamResponse.getResponse())
+                .map(teamVenueWrapper -> teamVenueWrapper.getTeam())
+                .count()  //Esto nos devuelve un Single<Long>
+                .flatMapObservable(totalCountTeams -> Observable.just(totalCountTeams.intValue()));  //Convertimos el SIngle<Long> a un Observable<Integer>
+    }
+
+    // Observable para recoger el nombre de un estadio en funcion del equipo
+    public Observable<String> getVenueByTeam (String country){
+        return this.footballApi.getTeamsByCountry(country).flatMapIterable(teamResponse -> teamResponse.getResponse())
+                .map(teamVenueWrapper -> teamVenueWrapper.getVenue()).map(venue -> venue.getName());
+    }
+
+    //Manera para recoger el objeto venue y luego en el cosumer poder seleccionar la informacion que queramos
+    public Observable<Venue> getVenueByTeamforObject (String country){
+        return this.footballApi.getTeamsByCountry(country).flatMapIterable(teamResponse -> teamResponse.getResponse())
+                .map(teamVenueWrapper -> teamVenueWrapper.getVenue()).map(venue -> venue);
+    }
+
+    //Faltaria en el teamtask el objeto Consumer para llamar a este observable y esto y luego unirlo al list view de fxml
 
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="425.0" prefWidth="594.0">
+         <children>
+            <Label fx:id="lbStatus" layoutX="36.0" layoutY="252.0" text="Label" />
+            <ProgressBar fx:id="pbProgress" layoutX="36.0" layoutY="277.0" prefHeight="18.0" prefWidth="238.0" progress="0.0" />
+            <ListView fx:id="teamsListView" layoutX="36.0" layoutY="14.0" prefHeight="225.0" prefWidth="238.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
