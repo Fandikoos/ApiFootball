@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Team {
 
     private int id;
@@ -16,7 +15,6 @@ public class Team {
     private String code;
     private String country;
     private int founded;
-    private boolean national;
     private String logo;
 
 }
