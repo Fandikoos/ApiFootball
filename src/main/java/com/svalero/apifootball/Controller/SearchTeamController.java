@@ -11,11 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SearchController implements Initializable {
+public class SearchTeamController implements Initializable {
 
     @FXML
     private Label lbStatus;
@@ -28,7 +27,7 @@ public class SearchController implements Initializable {
     private String country;
     private TeamTask teamTask;
 
-    public SearchController(String country) {
+    public SearchTeamController(String country) {
         this.country = country;
     }
 

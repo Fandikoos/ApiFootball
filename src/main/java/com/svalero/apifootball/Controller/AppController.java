@@ -1,7 +1,5 @@
 package com.svalero.apifootball.Controller;
 
-import com.svalero.apifootball.App;
-import io.reactivex.functions.Consumer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,11 +17,13 @@ import java.util.ResourceBundle;
 public class AppController implements Initializable {
 
     @FXML
-    private TextField tfCountry;
+    private TextField tfCountryOrCoach;
     @FXML
-    private TabPane tpCountries;
+    private TabPane tpTeamsOrCoachs;
     @FXML
-    private Button btSearchCountry;
+    private Button btSearchTeamByCountry;
+    @FXML
+    private Button btSearchCoachByName;
 
 
     public AppController(){
@@ -32,28 +32,49 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tpCountries.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
+        tpTeamsOrCoachs.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
 
     }
 
     //Metodo para cuando pulsemo el botton
     @FXML
-    public void btSearchCountry (ActionEvent event) {
-        String country = tfCountry.getText();
-        createSearch(country);
+    public void btSearchTeamByCountry (ActionEvent event) {
+        String country = tfCountryOrCoach.getText();
+        createSearchTeam(country);
         //System.out.println(country);
-        tfCountry.clear();
-        tfCountry.requestFocus();
+        tfCountryOrCoach.clear();
+        tfCountryOrCoach.requestFocus();
     }
 
-    private void createSearch(String country) {
+    @FXML
+    public void btSearchCoachByName(ActionEvent event){
+        String nameCoach = tfCountryOrCoach.getText();
+        createSearchCoach(nameCoach);
+        tfCountryOrCoach.clear();
+        tfCountryOrCoach.requestFocus();
+    }
+
+    private void createSearchCoach(String nameCoach) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("search.fxml"));
-            SearchController searchController = new SearchController(country);
-            loader.setController(searchController);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("searchCoachs.fxml"));
+            SearchCoachController searchCoachController = new SearchCoachController(nameCoach);
+            loader.setController(searchCoachController);
             VBox searchBox = loader.load();
 
-            tpCountries.getTabs().add(new Tab(country, searchBox));
+            tpTeamsOrCoachs.getTabs().add(new Tab(nameCoach, searchBox));
+        } catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    private void createSearchTeam(String country) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("searchTeams.fxml"));
+            SearchTeamController searchTeamController = new SearchTeamController(country);
+            loader.setController(searchTeamController);
+            VBox searchBox = loader.load();
+
+            tpTeamsOrCoachs.getTabs().add(new Tab(country, searchBox));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
