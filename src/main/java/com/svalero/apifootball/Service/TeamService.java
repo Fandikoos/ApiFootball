@@ -2,6 +2,7 @@ package com.svalero.apifootball.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.svalero.apifootball.Model.Coach;
 import com.svalero.apifootball.Model.Team;
 import com.svalero.apifootball.Model.Venue;
 import io.reactivex.Observable;
@@ -68,7 +69,11 @@ public class TeamService {
                 .map(teamVenueWrapper -> teamVenueWrapper.getVenue()).map(venue -> venue);
     }
 
-    //Faltaria en el teamtask el objeto Consumer para llamar a este observable y esto y luego unirlo al list view de fxml
+    public Observable<Coach> getCoachByName (String nameCoach){
+        return this.footballApi.getCoachByName(nameCoach).flatMapIterable(coachResponse -> coachResponse.getResponse())
+                .map(coach -> coach);
+    }
+
 
     //Metodo para obtener el numero de equipos en funcion de un país para que el progreso de la ejecucion del programa concuerde
     public Long getTotalTeamsByCountry(String country) {

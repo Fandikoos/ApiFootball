@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Country {
-    private int id;
-    private String name;
-    private String code;
+public class Career {
+    private Team team;
+    private String start;
+    private String end;
 }

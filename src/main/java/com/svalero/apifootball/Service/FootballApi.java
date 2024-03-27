@@ -1,7 +1,7 @@
 package com.svalero.apifootball.Service;
 
 
-import com.svalero.apifootball.Model.CountryResponse;
+import com.svalero.apifootball.Model.CoachResponse;
 import com.svalero.apifootball.Model.TeamResponse;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -11,7 +11,7 @@ public interface FootballApi {
     @GET("teams")
     Observable<TeamResponse> getTeamsByCountry(@Query("country") String country);
 
-    @GET("countries")
-    Observable<CountryResponse> getCountries();
+    @GET("coachs")
+    Observable<CoachResponse> getCoachByName(@Query("search") String coachName);
 
 }
