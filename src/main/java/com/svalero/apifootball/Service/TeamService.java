@@ -74,6 +74,12 @@ public class TeamService {
                 .map(coach -> coach);
     }
 
+    public Long getTotalCoachsByName(String nameCoach) {
+        return getCoachByName(nameCoach)
+                .count()
+                .blockingGet();
+    }
+
 
     //Metodo para obtener el numero de equipos en funcion de un país para que el progreso de la ejecucion del programa concuerde
     public Long getTotalTeamsByCountry(String country) {

@@ -11,7 +11,7 @@
       <AnchorPane prefHeight="425.0" prefWidth="594.0">
          <children>
             <Label fx:id="lbStatus" layoutX="14.0" layoutY="230.0" text="Label" />
-            <ProgressBar fx:id="pbProgress" layoutX="2.0" layoutY="264.0" prefHeight="18.0" prefWidth="600.0" progress="0.0" />
+            <ProgressBar fx:id="pbProgress" layoutX="14.0" layoutY="259.0" prefHeight="18.0" prefWidth="207.0" progress="0.0" />
             <TableView fx:id="coachTableView" layoutY="32.0" prefHeight="186.0" prefWidth="600.0" />
          </children>
       </AnchorPane>

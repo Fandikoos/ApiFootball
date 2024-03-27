@@ -22,14 +22,18 @@ public class CoachTask extends Task<Integer> {
         updateMessage("Doing operation");
         TeamService teamService = new TeamService();
 
-        System.out.println(nameCoach);
+        final Long totalCoachs = teamService.getTotalCoachsByName(nameCoach);
+        final int[] totalProcessedCoachs = {0};
 
         Consumer<Coach> coachConsumer = (coach) -> {
-            //Thread.sleep(20);
+            Thread.sleep(1000);
             Platform.runLater(() -> {
                 infoCoach.add(coach);
-                String team = coach.getTeam().getName();
-                System.out.println(team);
+                //String team = coach.getTeam().getName();
+                //System.out.println(team);
+                totalProcessedCoachs[0]++;
+                double progressTeams = (double) totalProcessedCoachs[0] / totalCoachs;
+                updateProgress(progressTeams, 1);
             });
         };
 

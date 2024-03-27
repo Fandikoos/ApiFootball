@@ -23,7 +23,6 @@ public class TeamTask extends Task<Integer> {
     protected Integer call() throws Exception {
         updateMessage("Doing operation");
         TeamService teamService = new TeamService();
-        //System.out.println(country + "TeamTask");
 
         final Long totalTeams = teamService.getTotalTeamsByCountry(country);
         //System.out.println(totalTeams);

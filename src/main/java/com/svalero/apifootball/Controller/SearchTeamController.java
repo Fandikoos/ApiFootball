@@ -51,6 +51,7 @@ public class SearchTeamController implements Initializable {
 
         teamTask.setOnSucceeded(event -> {
             this.teamsListView.setItems(this.teamsNames);
+            lbStatus.setText("The search has finished");
         });
 
 

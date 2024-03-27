@@ -4,7 +4,6 @@ com\svalero\apifootball\Controller\SearchCoachController$4.class
 com\svalero\apifootball\Task\CoachTask.class
 com\svalero\apifootball\Controller\SearchCoachController$3.class
 com\svalero\apifootball\Controller\SearchCoachController$6.class
-com\svalero\apifootball\Model\Career.class
 com\svalero\apifootball\Model\Coach.class
 com\svalero\apifootball\App.class
 com\svalero\apifootball\Controller\SearchCoachController$1.class

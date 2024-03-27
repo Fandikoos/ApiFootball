@@ -18,5 +18,4 @@ public class Coach {
     private String nationality;
     private String photo;
     private Team team;
-    private List<Career> career;
 }
