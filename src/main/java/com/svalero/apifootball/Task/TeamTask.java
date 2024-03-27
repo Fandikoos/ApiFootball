@@ -21,7 +21,7 @@ public class TeamTask extends Task<Integer> {
 
     @Override
     protected Integer call() throws Exception {
-        updateMessage("Starting operation");
+        updateMessage("Doing operation");
         TeamService teamService = new TeamService();
         //System.out.println(country + "TeamTask");
 
