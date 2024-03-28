@@ -16,5 +16,6 @@ public class Team {
     private String country;
     private int founded;
     private String logo;
+    private Venue venue;
 
 }
