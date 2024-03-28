@@ -2,9 +2,7 @@ package com.svalero.apifootball.Controller;
 
 import com.svalero.apifootball.Model.Team;
 import com.svalero.apifootball.Task.TeamTask;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
@@ -17,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class SearchTeamController implements Initializable {
@@ -27,10 +26,15 @@ public class SearchTeamController implements Initializable {
     private ProgressBar pbProgress;
     @FXML
     private TableView<Team> teamTableView;
+    @FXML
+    private Button orderByFoundation;
+    @FXML
+    private Label infoSort;
 
     private ObservableList<Team> teamInfo;
     private String country;
     private TeamTask teamTask;
+    private boolean ascendingOrder = true;
 
     public SearchTeamController(String country) {
         this.country = country;
@@ -168,4 +172,18 @@ public class SearchTeamController implements Initializable {
         new Thread(teamTask).start();
 
     }
+
+    @FXML
+    private void sortByFoundation(){
+        if (ascendingOrder) {
+            infoSort.setText("Orden actual: de viejo a nuevo");
+            teamInfo.sort(Comparator.comparingInt(Team::getFounded));
+        } else {
+            teamInfo.sort(Comparator.comparingInt(Team::getFounded).reversed());
+            infoSort.setText("Orden actual: de nuevo a viejo");
+        }
+        ascendingOrder = !ascendingOrder;
+        teamTableView.setItems(teamInfo);
+    }
+
 }
