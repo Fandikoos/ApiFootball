@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="425.0" prefWidth="594.0">
+      <AnchorPane prefHeight="400.0" prefWidth="638.0">
          <children>
-            <Label fx:id="lbStatus" layoutX="36.0" layoutY="252.0" text="Label" />
-            <ProgressBar fx:id="pbProgress" layoutX="36.0" layoutY="277.0" prefHeight="18.0" prefWidth="238.0" progress="0.0" />
-            <ListView fx:id="teamsListView" layoutX="36.0" layoutY="14.0" prefHeight="225.0" prefWidth="238.0" />
+            <Label fx:id="lbStatus" layoutX="14.0" layoutY="243.0" text="Label" />
+            <ProgressBar fx:id="pbProgress" layoutX="14.0" layoutY="267.0" prefHeight="18.0" prefWidth="252.0" progress="0.0" />
+            <TableView fx:id="teamTableView" layoutX="14.0" layoutY="28.0" prefHeight="200.0" prefWidth="450.0" />
+            <Button fx:id="orderByFoundation" layoutX="532.0" layoutY="115.0" mnemonicParsing="false" onAction="#sortByFoundation" text="Ordenar " />
+            <Label layoutX="482.0" layoutY="92.0" text="Ordenar por año de fundacion" />
+            <Label fx:id="infoSort" layoutX="245.0" layoutY="243.0" text="Orden actual: Por defecto" />
          </children>
       </AnchorPane>
    </children>

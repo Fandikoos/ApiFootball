@@ -57,14 +57,8 @@ public class TeamService {
                 .map(teamVenueWrapper -> teamVenueWrapper.getTeam()).map(team -> team);
     }
 
-    // Observable para recoger el nombre de un estadio en funcion del equipo
-    public Observable<String> getVenueByTeam (String country){
-        return this.footballApi.getTeamsByCountry(country).flatMapIterable(teamResponse -> teamResponse.getResponse())
-                .map(teamVenueWrapper -> teamVenueWrapper.getVenue()).map(venue -> venue.getName());
-    }
-
-    //Manera para recoger el objeto venue y luego en el cosumer poder seleccionar la informacion que queramos
-    public Observable<Venue> getVenueByTeamforObject (String country){
+    //Observable para recoger el objeto venue y luego en el cosumer poder seleccionar la informacion que queramos
+    public Observable<Venue> getVenueByTeam (String country){
         return this.footballApi.getTeamsByCountry(country).flatMapIterable(teamResponse -> teamResponse.getResponse())
                 .map(teamVenueWrapper -> teamVenueWrapper.getVenue()).map(venue -> venue);
     }
@@ -72,6 +66,12 @@ public class TeamService {
     public Observable<Coach> getCoachByName (String nameCoach){
         return this.footballApi.getCoachByName(nameCoach).flatMapIterable(coachResponse -> coachResponse.getResponse())
                 .map(coach -> coach);
+    }
+
+    public Long getTotalCoachsByName(String nameCoach) {
+        return getCoachByName(nameCoach)
+                .count()
+                .blockingGet();
     }
 
 

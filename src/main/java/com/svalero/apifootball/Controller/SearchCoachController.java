@@ -59,9 +59,10 @@ public class SearchCoachController implements Initializable {
             lbStatus.setText(newValue);
         });
 
+        //Obtenemos la lista de datos del coach y se los pasamos al tableview
         coachTableView.setItems(infoCoach);
 
-        //Configurar columnas de la Tableview, nombre de la columna y luego seleccionamos el dato que queremos mostrar
+        //Configurar columnas de la Tableview, nombre de la columna y luego el dato que queremos, ene ste caso de la clase Coach y el name
         TableColumn<Coach, String> nameColumn = new TableColumn<>("Nombre");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         //Esto simplemente es una manera de centrar vertical y horizontalmente los textos dentro de un TableView
@@ -184,7 +185,9 @@ public class SearchCoachController implements Initializable {
         currentTeamColumn.setPrefWidth(100);
         coachImageColumn.setPrefWidth(180);
 
+        //Añadimos todas estas columnas y su informacion al tableView
         coachTableView.getColumns().addAll(nameColumn, lastNameColumn, ageColumn, nationalityColumn, currentTeamColumn ,coachImageColumn);
+
         new Thread(coachTask).start();
     }
 }
