@@ -5,11 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="811.0" stylesheets="@interfaz.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="tfCountryOrCoach" layoutX="58.0" layoutY="39.0" prefHeight="26.0" prefWidth="330.0" promptText="Introduzca país o entrenador" />
+      <TextField fx:id="tfCountryOrCoach" layoutX="58.0" layoutY="39.0" prefHeight="27.0" prefWidth="382.0" promptText="Introduzca país o entrenador" />
       <Button fx:id="btSearchTeamByCountry" layoutX="58.0" layoutY="78.0" mnemonicParsing="false" onAction="#btSearchTeamByCountry" text="Buscar equipos" />
       <TabPane fx:id="tpTeamsOrCoachs" layoutX="15.0" layoutY="127.0" prefHeight="366.0" prefWidth="784.0" tabClosingPolicy="UNAVAILABLE" />
-      <Button fx:id="btSearchCoachByName" layoutX="175.0" layoutY="78.0" mnemonicParsing="false" onAction="#btSearchCoachByName" text="Buscar entrenadores" />
+      <Button fx:id="btSearchCoachByName" layoutX="207.0" layoutY="78.0" mnemonicParsing="false" onAction="#btSearchCoachByName" text="Buscar entrenadores" />
+      <Button fx:id="btExit" layoutX="385.0" layoutY="78.0" mnemonicParsing="false" onAction="#exitApplication" text="Exit" />
    </children>
 </AnchorPane>

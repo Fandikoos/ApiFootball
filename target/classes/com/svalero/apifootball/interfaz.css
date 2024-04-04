@@ -1,0 +1,38 @@
+/* Estilo para el fondo del AnchorPane */
+.anchor-pane {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Estilo para el TextField */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+/* Estilo para los botones */
+.button {
+    -fx-background-color: #4CAF50; /* Color de fondo */
+    -fx-text-fill: #ffffff; /* Color del texto */
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px; /* Espaciado interno */
+    -fx-border-radius: 5px; /* Borde redondeado */
+    -fx-background-radius: 5px; /* Borde redondeado del fondo */
+    -fx-margin: 0 10px; /* Espacio horizontal entre los botones */
+}
+
+/* Estilo para el TabPane */
+.tab-pane {
+    -fx-background-color: #ffffff;
+    -fx-tab-min-width: 150px; /* Ancho mínimo de las pestañas */
+}
+
+/* Estilo para los tabs */
+.tab {
+    -fx-font-size: 16px;
+}
+
+/* Estilo para el contenido del TabPane */
+.tab-content-area {
+    -fx-background-color: #f9f9f9;
+}
