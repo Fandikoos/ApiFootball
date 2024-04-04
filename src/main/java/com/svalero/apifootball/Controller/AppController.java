@@ -1,5 +1,6 @@
 package com.svalero.apifootball.Controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,8 @@ public class AppController implements Initializable {
     private Button btSearchTeamByCountry;
     @FXML
     private Button btSearchCoachByName;
+    @FXML
+    private Button btExit;
 
 
     public AppController(){
@@ -78,5 +81,10 @@ public class AppController implements Initializable {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+    }
+
+    @FXML
+    public void exitApplication(ActionEvent event) {
+        Platform.exit();
     }
 }

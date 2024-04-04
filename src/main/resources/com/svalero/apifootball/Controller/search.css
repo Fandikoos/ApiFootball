@@ -1,0 +1,33 @@
+/* styles.css */
+
+/* Estilo para el fondo del VBox */
+.v-box {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Estilo para el AnchorPane dentro del VBox */
+.anchor-pane {
+    -fx-background-color: #ffffff;
+    -fx-padding: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+/* Estilo para la etiqueta */
+.label {
+    -fx-font-size: 16px;
+}
+
+/* Estilo para la barra de progreso */
+.progress-bar {
+    -fx-accent: #4CAF50; /* Color de la barra de progreso */
+}
+
+/* Estilo para la tabla */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}

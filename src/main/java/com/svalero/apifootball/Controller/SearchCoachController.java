@@ -62,7 +62,7 @@ public class SearchCoachController implements Initializable {
         //Obtenemos la lista de datos del coach y se los pasamos al tableview
         coachTableView.setItems(infoCoach);
 
-        //Configurar columnas de la Tableview, nombre de la columna y luego el dato que queremos, ene ste caso de la clase Coach y el name
+        //Configuramos las columnas de la Tableview, nombre de la columna y luego el dato que queremos, ene ste caso de la clase Coach y el name
         TableColumn<Coach, String> nameColumn = new TableColumn<>("Nombre");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         //Esto simplemente es una manera de centrar vertical y horizontalmente los textos dentro de un TableView
